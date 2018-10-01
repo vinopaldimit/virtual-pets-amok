@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ShelterTest {
@@ -29,5 +30,17 @@ public class ShelterTest {
 		underTest.cleanBox();
 		int result = box.getPoopQuantity();
 		assertThat(result, is(0));
+	}
+	
+	//tests copied from last project
+	@Test
+	public void shouldAdoptPet() {
+		Shelter underTest = new Shelter();
+		VirtualPet catOne = new VirtualCat("Kitty the Cat", "Calico kitten", null);
+		VirtualPet catTwo = new VirtualCat("Marty", "Black kitten", null);
+		underTest.addPet(catOne);
+		underTest.addPet(catTwo);
+		underTest.adopt("Marty");
+		Assert.assertEquals(1, underTest.pets.size());
 	}
 }

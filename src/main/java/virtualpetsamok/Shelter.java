@@ -25,6 +25,10 @@ public class Shelter {
 			}
 		}
 	}
+	
+	public void adopt(String name) {
+		pets.remove(name);
+	}
 
 	public LitterBox getBox() {
 		return box;

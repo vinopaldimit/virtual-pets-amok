@@ -1,6 +1,6 @@
 package virtualpetsamok;
 
-public class VirtualPet {
+public abstract class VirtualPet {
 	private final int VALUE_MAX = 50;
 
 	protected int boredom;
