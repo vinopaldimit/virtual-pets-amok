@@ -4,9 +4,9 @@ public abstract class OrganicPet extends VirtualPet {
 
 	private final int POOP_TOTAL = 20;
 
-	protected int hunger;
-	protected int thirst;
-	protected int poop;
+	private int hunger;
+	private int thirst;
+	private int poop;
 
 	public OrganicPet(String name, String desc) {
 		super(name, desc);
@@ -16,11 +16,11 @@ public abstract class OrganicPet extends VirtualPet {
 	}
 
 	// NOT CURRENTLY USED
-	public void tick(int ticks) {
+	/*public void tick(int ticks) {
 		for (int i = 0; i < ticks; i++) {
 			hunger++;
 			thirst++;
-			boredom++;
+			incrementBoredom(1);
 			poop += (int) (Math.random() * 2 + 1);
 
 			hunger = stayInLimits(hunger);
@@ -29,28 +29,28 @@ public abstract class OrganicPet extends VirtualPet {
 
 			refreshPoopCount();
 		}
-	}
+	}*/
 
 	// INTERACTIONS
 
 	@Override
 	public void play() {
-		boredom -= 15;
+		decrementBoredom(15);
 		hunger += 5;
 		thirst += 5;
-		health += 2;
+		incrementHealth(2);
 	}
 
 	public void feed() {
 		hunger -= 15;
 		thirst += 5;
 		poop += 3;
-		health += 2;
+		incrementHealth(2);
 	}
 
 	public void water() {
 		thirst -= 15;
-		health += 2;
+		incrementHealth(2);
 	}
 
 	// METHODS FOR TICK
@@ -80,6 +80,20 @@ public abstract class OrganicPet extends VirtualPet {
 
 	public int getPoop() {
 		return poop;
+	}
+	
+	//MUTATORS
+	public void incrementHunger(int num) {
+		hunger += num;
+	}
+	public void incrementThirst(int num) {
+		thirst += num;
+	}
+	public void incrementPoop(int num) {
+		poop += num;
+	}
+	public void decrementPoop(int num) {
+		poop -= num;
 	}
 
 }

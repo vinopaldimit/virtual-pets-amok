@@ -11,21 +11,22 @@ public class VirtualDog extends OrganicPet implements WalkablePet {
 
 	@Override
 	public void walk() {
-		boredom -= 5;
-		poop -= 5;
+		decrementBoredom(5);
+		decrementPoop(5);
 	}
 
-	@Override
+	//@Override
 	public void tick(int ticks) {
 		for (int i = 0; i < ticks; i++) {
-			hunger++;
-			thirst++;
-			boredom++;
-			health += 2;
-			poop += (int) (Math.random() * 2 + 1);
+			incrementHunger(1);
+			incrementThirst(1);
+			incrementBoredom(1);
+			incrementHealth(2);
+			incrementPoop((int) (Math.random() * 2 + 1));
 
+			//TODO
 			mood = "Happy";
-			if (health < 20 || hunger + thirst + boredom > 120) {
+			if (getHealth() < 20 || getHunger() + getThirst() + getBoredom() > 120) {
 				mood = "Unhappy";
 			}
 
@@ -42,7 +43,7 @@ public class VirtualDog extends OrganicPet implements WalkablePet {
 	private void refreshCageClean() {
 		if (isPoopAtMax()) {
 			cageClean = false;
-			health -= 10;
+			decrementHealth(10);
 		}
 	}
 

@@ -72,4 +72,8 @@ public class Shelter {
 		}
 	}
 
+	public VirtualPet getPet(String name) {
+		return pets.get(name);
+	}
+
 }

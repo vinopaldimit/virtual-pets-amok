@@ -13,16 +13,17 @@ public class RobotPet extends VirtualPet implements WalkablePet {
 
 	public void tick(int ticks) {
 		for (int i = 0; i < ticks; i++) {
-			boredom++;
+			incrementBoredom(1);
 			rust+= 3;
-			health += 2;
+			incrementHealth(2);
 
 			if (rust >= 50) {
-				health -= 5;
+				decrementHealth(5);
 			}
 
+			//TODO help
 			mood = "Happy";
-			if (health < 20 || boredom > 45) {
+			if (getHealth() < 20 || getBoredom() > 45) {
 				mood = "Unhappy";
 			}
 
@@ -38,12 +39,12 @@ public class RobotPet extends VirtualPet implements WalkablePet {
 
 	public void oil() {
 		rust -= 5;
-		health += 15;
+		incrementHealth(15);
 	}
 
 	@Override
 	public void walk() {
-		boredom -= 5;
+		decrementBoredom(5);
 	}
 
 	public String getType() {

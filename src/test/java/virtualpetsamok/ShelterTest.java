@@ -32,6 +32,17 @@ public class ShelterTest {
 		assertThat(result, is(0));
 	}
 	
+	@Test
+	public void shouldFeedAll() {
+		Shelter underTest = new Shelter();
+		VirtualCat test = new VirtualCat("Meow", null, null);
+		int initVal = test.getHunger();
+		underTest.addPet(test);
+		underTest.feedAll();
+		int result = ((VirtualCat)(underTest.getPet("Meow"))).getHunger();
+		assertThat(result, is(initVal-15));
+	}
+	
 	//tests copied from last project
 	@Test
 	public void shouldAdoptPet() {

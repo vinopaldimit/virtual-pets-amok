@@ -3,11 +3,11 @@ package virtualpetsamok;
 public abstract class VirtualPet {
 	private final int VALUE_MAX = 50;
 
-	protected int boredom;
-	protected int health;
-	protected String desc;
-	protected String name;
-	protected String mood;
+	private int boredom;
+	private int health;
+	private String desc;
+	private String name;
+	private String mood;
 
 	public VirtualPet(String name, String desc) {
 		this.name = name;
@@ -50,6 +50,19 @@ public abstract class VirtualPet {
 			return 0;
 		}
 		return number;
+	}
+	
+	public void incrementBoredom(int num) {
+		boredom += num;
+	}
+	public void incrementHealth(int num) {
+		health += num;
+	}
+	public void decrementBoredom(int num) {
+		boredom -= num;
+	}
+	public void decrementHealth(int num) {
+		health -= num;
 	}
 
 }
